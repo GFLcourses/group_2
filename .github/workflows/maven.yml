@@ -4,7 +4,7 @@ on:
   push:
     branches: [ valerii_d ]
   pull_request:
-    branches: [ valerii_d ]
+    branches: [ main ]
 
 jobs:
   build:
