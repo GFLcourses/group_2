@@ -1,7 +1,7 @@
 package executor.service.model;
 
-import java.util.Objects;
 
+import java.util.Objects;
 
 public class WebDriverConfig {
 
@@ -9,7 +9,6 @@ public class WebDriverConfig {
     private String userAgent;
     private Long pageLoadTimeout;
     private Long implicitlyWait;
-
 
     public WebDriverConfig() {
     }
@@ -53,7 +52,6 @@ public class WebDriverConfig {
     public void setImplicitlyWait(Long implicitlyWait) {
         this.implicitlyWait = implicitlyWait;
     }
-
 
     @Override
     public boolean equals(Object o) {
