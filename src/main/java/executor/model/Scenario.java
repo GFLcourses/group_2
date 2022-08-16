@@ -1,4 +1,4 @@
-package executor.service.model;
+package executor.model;
 
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package executor.service;
-
-import executor.service.model.Step;
+package executor;
 
 /**
  * Hello world!

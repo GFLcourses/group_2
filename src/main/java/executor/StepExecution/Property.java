@@ -1,4 +1,6 @@
-package executor.service.StepExecution;
+package executor.StepExecution;
+
+import org.apache.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class Property {
-
+final static Logger logger = Logger.getLogger(Property.class);
     Properties property = new Properties();
 
 
@@ -26,8 +28,8 @@ public class Property {
                 String pageLoadTimeout = property.getProperty("WebDriverConfig.pageLoadTimeout");
                 String implicitlyWait = property.getProperty("WebDriverConfig.implicitlyWait");
 
-
-                System.out.println("username: " + username
+                logger.info(
+                        "username: " + username
                         + ", password: " + password
                         + ", host: " + hostname
                         + ", port: " + port
