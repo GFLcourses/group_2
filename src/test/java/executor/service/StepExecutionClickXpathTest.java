@@ -2,7 +2,6 @@ package executor.service;
 
 import executor.model.Step;
 import executor.service.impl.StepExecutionClickXpath;
-import executor.service.StepExecutionService;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,11 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class StepExecutionClickXpathTest {
@@ -36,8 +37,14 @@ public class StepExecutionClickXpathTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://rozetka.com.ua/");*/
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        HashMap<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("profile.default_content_settings.popups", 0);
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("useAutomationExtension", false);
+        options.setExperimentalOption("prefs", chromePrefs);
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless"); //should be enabled for Jenkins
+        options.addArguments("--disable-dev-shm-usage"); //should be enabled for Jenkins
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://rozetka.com.ua/");
         StepExecutionClickXpath clickXpathTest = new StepExecutionClickXpath();
