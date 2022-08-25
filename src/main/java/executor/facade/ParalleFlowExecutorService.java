@@ -8,7 +8,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class ParalleFlowExecutorService {
-     public void director(){
+
+    public void director(){
        int corePoolSize = Integer.parseInt(Property.getProperty("ThreadPoolConfig.corePoolSize"));
        long keepAliveTime = Long.parseLong(Property.getProperty("ThreadPoolConfig.keepAliveTime"));
        BlockingQueue<Runnable> blockingQueue =
@@ -33,4 +34,5 @@ public class ParalleFlowExecutorService {
            throw new RuntimeException(e);
        }
     }
+
 }
