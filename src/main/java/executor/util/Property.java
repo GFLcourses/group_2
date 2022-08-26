@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Property {
+    //
     protected static FileInputStream fileInputStream;
     protected static Properties PROPERTIES;
     static {
