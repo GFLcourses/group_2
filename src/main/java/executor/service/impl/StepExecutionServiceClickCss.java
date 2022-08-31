@@ -9,18 +9,22 @@ import org.openqa.selenium.WebElement;
 public class StepExecutionServiceClickCss implements StepExecutionService {
     private static volatile StepExecutionServiceClickCss INSTANCE;
 
-    private StepExecutionServiceClickCss(){};
+    private StepExecutionServiceClickCss() {
+    }
 
-    public static StepExecutionServiceClickCss getInstance(){
-        if(INSTANCE == null) {
+    ;
+
+    public static StepExecutionServiceClickCss getInstance() {
+        if (INSTANCE == null) {
             synchronized (StepExecutionServiceClickCss.class) {
-                if(INSTANCE == null) {
+                if (INSTANCE == null) {
                     INSTANCE = new StepExecutionServiceClickCss();
                 }
             }
         }
         return INSTANCE;
     }
+
 
     @Override
     public String getStepAction() {
@@ -42,3 +46,4 @@ public class StepExecutionServiceClickCss implements StepExecutionService {
         }
     }
 }
+

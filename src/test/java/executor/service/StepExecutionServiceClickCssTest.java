@@ -13,11 +13,11 @@ import static org.mockito.Mockito.*;
 public class StepExecutionServiceClickCssTest {
      @Test
     public void ClickCssTest() {
+         StepExecutionServiceClickCss stepExecutionClickCss = StepExecutionServiceClickCss.getInstance();
          WebDriver webDriver = mock(WebDriver.class);
-        StepExecutionServiceClickCss stepExecutionClickCss = StepExecutionServiceClickCss.getInstance();
-        stepExecutionClickCss.step(webDriver, new Step("clickCss",
-                "body > ul > li:nth-child(1) > a"));
+         Step step = new Step("clickCss","body > ul > li:nth-child(1) > a");
+        stepExecutionClickCss.step(webDriver, step);
         verify(webDriver, times(1)).
-                findElement(By.cssSelector("body > ul > li:nth-child(1) > a"));
+                findElement(By.cssSelector(step.getValue()));
     }
 }
