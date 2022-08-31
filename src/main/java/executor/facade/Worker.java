@@ -5,13 +5,13 @@ import org.apache.log4j.Logger;
 public class Worker implements Runnable {
     final static Logger logger = Logger.getLogger(Worker.class);
 
-    private String test;
-    public Worker(String test) {
+    private int test;
+    public Worker(int test) {
         //something
         this.test = test;
     }
 
-    public String getTest() {
+    public int getTest() {
         return test;
     }
 
@@ -22,6 +22,7 @@ public class Worker implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        test++;
         logger.info(test + " Worker start work\n");
         //does something
     }

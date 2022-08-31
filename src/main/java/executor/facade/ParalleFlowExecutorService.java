@@ -8,6 +8,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class ParalleFlowExecutorService {
+    private int countOfTask;
+
+
 
     public void director(){
         int corePoolSize = Integer.parseInt(Property.getProperty("ThreadPoolConfig.corePoolSize"));
@@ -23,8 +26,9 @@ public class ParalleFlowExecutorService {
         // Let start all core threads initially
         executor.prestartAllCoreThreads();
 
-        for (int i = 1; i <= 100; i++) {
-            blockingQueue.offer(new Worker("Test " + i));
+
+        for (int i = 0; i <= 100; i++) {
+            blockingQueue.offer(new Worker(i));
         }
 
         executor.shutdown();
