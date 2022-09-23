@@ -16,10 +16,12 @@ public class WebDriverChromeTest {
     @Test
     public void TestProperty() {
 
-    List<String> actual;
-    actual = Arrays.asList("test1","test2","test3","test4","test5","test6","test7","test8");
 
-         assertEquals(property.connect(),actual);
+
+         int actual = 10;
+        int expected = Integer.parseInt(Property.getProperty("ThreadPoolConfig.corePoolSize"));
+
+        assertEquals(expected, actual);
 
     }
 

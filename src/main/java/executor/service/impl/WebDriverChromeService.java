@@ -13,14 +13,9 @@ public class WebDriverChromeService implements WebDriverInitializerService {
     }
 
 
-    Property property = new Property();
-
     @Override
     public WebDriver create() {
-        property.connect();
         ChromeOptions options = new ChromeOptions();
-
-        options.addArguments(property.connect());
         return new ChromeDriver();
     }
 }
