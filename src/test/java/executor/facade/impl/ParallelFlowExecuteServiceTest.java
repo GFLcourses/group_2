@@ -9,6 +9,7 @@ import executor.service.impl.ProxySourcesClientService;
 import executor.service.impl.ScenarioExecutorService;
 import executor.service.impl.ScenarioSourceListenerService;
 import executor.util.ObjectMapperUtil;
+import org.junit.After;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,10 @@ import static org.mockito.Mockito.*;
 
 public class ParallelFlowExecuteServiceTest {
 
+    @After
+    public void validate() {
+        validateMockitoUsage();
+    }
     @Test
     public void parallelTest() {
 
