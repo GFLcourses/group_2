@@ -32,6 +32,6 @@ public class ParallelFlowExecuteServiceTest {
         ProxySourcesClientService proxy = new ProxySourcesClientService(new ObjectMapper());
         ParallelFlowExecuteService parallelFlowExecuteService = mock(ParallelFlowExecuteService.class);
         parallelFlowExecuteService.parallelExecute(new Worker(scenarioService,scenarios,proxy));
-        verify(parallelFlowExecuteService,times(2));
+        verify(parallelFlowExecuteService,times(2).description(" "));
     }
 }
