@@ -11,6 +11,7 @@ import executor.service.impl.ScenarioSourceListenerService;
 import executor.util.ObjectMapperUtil;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Queue;
@@ -26,12 +27,15 @@ public class ParallelFlowExecuteServiceTest {
     @Test
     public void parallelTest() {
 
-        ScenarioSourceListenerService scenarioService = new ScenarioSourceListenerService(new ObjectMapperUtil());
-        Queue<Scenario> scenarios = scenarioService.execute();
+        ProxySourcesClientService proxySourcesClientService = new ProxySourcesClientService(new ObjectMapper());
+        ScenarioSourceListenerService scenarioSourceListenerService = new ScenarioSourceListenerService(new ObjectMapperUtil());
+        Queue<Scenario> scenarios = scenarioSourceListenerService.execute();
 
-        ProxySourcesClientService proxy = new ProxySourcesClientService(new ObjectMapper());
-        ParallelFlowExecuteService parallelFlowExecuteService = mock(ParallelFlowExecuteService.class);
-        parallelFlowExecuteService.parallelExecute(new Worker(scenarioService,scenarios,proxy));
-        verify(parallelFlowExecuteService,times(2).description(" "));
+
+        ParallelFlowExecuteService parallelFlowExecuteService = new ParallelFlowExecuteService();
+        parallelFlowExecuteService.parallelExecute(new Worker(scenarioSourceListenerService,scenarios,proxySourcesClientService));
+        ParallelFlowExecuteService parallel = mock(ParallelFlowExecuteService.class);
+        parallel.parallelExecute(new Worker(scenarioSourceListenerService,scenarios,proxySourcesClientService));
+        Mockito.verify(parallel,times(2));
     }
 }
