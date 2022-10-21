@@ -17,6 +17,8 @@ import org.openqa.selenium.WebDriver;
 import java.util.Queue;
 
 import static org.mockito.Mockito.*;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
+import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
 public class ParallelFlowExecuteServiceTest {
     @Test
@@ -31,6 +33,6 @@ public class ParallelFlowExecuteServiceTest {
         parallelFlowExecuteService.parallelExecute(new Worker(scenarioSourceListenerService,scenarios,proxySourcesClientService));
         ParallelFlowExecuteService parallel = mock(ParallelFlowExecuteService.class);
         parallel.parallelExecute(new Worker(scenarioSourceListenerService,scenarios,proxySourcesClientService));
-        Mockito.verify(parallel,times(2));
+        Mockito.verify(parallel,times(2)).parallelExecute(new Worker(scenarioSourceListenerService,scenarios,proxySourcesClientService));
     }
 }
