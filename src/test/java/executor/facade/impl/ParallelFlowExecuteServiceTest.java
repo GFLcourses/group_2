@@ -19,11 +19,6 @@ import java.util.Queue;
 import static org.mockito.Mockito.*;
 
 public class ParallelFlowExecuteServiceTest {
-
-    @After
-    public void validate() {
-        validateMockitoUsage();
-    }
     @Test
     public void parallelTest() {
 
